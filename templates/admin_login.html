@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #3498db, #6dd5fa);
+        margin: 0;
+        padding: 0;
+    }
+
+    .login-container {
+        max-width: 380px;
+        background: white;
+        margin: 100px auto;
+        padding: 35px 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        font-size: 14px;
+    }
+
+    input:focus {
+        border-color: #3498db;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background: #2c3e50;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #1a252f;
+    }
+
+    .error-message {
+        color: red;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #3498db;
+        font-size: 14px;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="login-container">
+
+    <h2>Admin Login</h2>
+
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <!-- Updated Form -->
+    <form method="POST" autocomplete="off">
+        <input type="text"
+               name="username"
+               placeholder="Enter Username"
+               autocomplete="off"
+               required>
+
+        <input type="password"
+               name="password"
+               placeholder="Enter Password"
+               autocomplete="new-password"
+               required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <a href="/" class="back-link">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>

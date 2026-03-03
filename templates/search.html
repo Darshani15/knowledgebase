@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Results</title>
+<style>
+    body { font-family: Arial; background: #eef2f7; margin:0; padding:0; }
+
+    .header {
+        background:#2c3e50;
+        color:white;
+        padding:20px;
+        text-align:center;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .result-box {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px gray;
+        transition:0.3s;
+    }
+
+    .result-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px gray;
+    }
+
+    h3 { color:#2c3e50; margin-bottom:5px; }
+
+    .solution {
+        background:#f4f8fb;
+        padding:15px;
+        border-radius:8px;
+        margin-top:10px;
+    }
+
+    .no-result {
+        text-align:center;
+        color:red;
+        font-weight:bold;
+    }
+
+    .back-link {
+        display:block;
+        text-align:center;
+        margin-top:30px;
+        text-decoration:none;
+        color:#2c3e50;
+        font-weight:bold;
+    }
+
+    .back-link:hover { color:#3498db; }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h2>Search Results</h2>
+</div>
+
+<div class="container">
+
+    {% if message %}
+        <p class="no-result">{{ message }}</p>
+    {% endif %}
+
+    {% for row in data %}
+    <div class="result-box">
+        <h3>{{ row.title }}</h3>
+        <p><strong>Problem:</strong> {{ row.description }}</p>
+
+        <div class="solution">
+            <strong>Solution:</strong>
+            <p>{{ row.solution }}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    <a href="/" class="back-link">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>

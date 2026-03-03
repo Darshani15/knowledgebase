@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Knowledge Base</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f7; margin: 0; padding: 0; }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 { margin: 0; }
+
+        .nav {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .nav a:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .ask-form {
+            background: #3498db;
+            padding: 25px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .ask-form input[type="text"] {
+            width: 65%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .ask-form button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            background: #2c3e50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .ask-form button:hover {
+            background: #1a252f;
+        }
+
+        .login-message {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .login-message a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .login-message a:hover {
+            background: #1a252f;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>💻 IT Knowledge Base</h1>
+
+        <div class="nav">
+            {% if session.get('admin') %}
+                <a href="/dashboard">Dashboard</a>
+                <a href="/admin_logout">Logout</a>
+            {% elif session.get('user') %}
+                <a href="/user_logout">Logout</a>
+            {% else %}
+                <a href="/admin_login">Admin</a>
+                <a href="/user_login">User Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container">
+
+        {% if session.get('user') %}
+            <div class="ask-form">
+                <form method="POST" action="/ask">
+                    <input type="text" name="question" placeholder="Type your IT question here..." required>
+                    <button type="submit">Ask</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="login-message">
+                <h3>Please login to ask a question</h3>
+                <a href="/user_login">User Login</a>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="footer">
+        &copy; 2026 IT Knowledge Base
+    </div>
+
+</body>
+</html>

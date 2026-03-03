@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if data %}Edit{% else %}Add{% endif %} Problem</title>
+<style>
+body { font-family: Arial; background:#eef2f7; margin:0; padding:0; }
+.container { max-width:600px; background:white; margin:50px auto; padding:30px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.2); }
+h2 { color:#2c3e50; text-align:center; margin-bottom:20px; }
+input, textarea { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:7px; }
+button { padding:12px 20px; background:#2c3e50; color:white; border:none; border-radius:7px; cursor:pointer; display:block; margin:auto; }
+button:hover { background:#1a252f; }
+a.back { display:block; text-align:center; margin-top:15px; text-decoration:none; color:#3498db; }
+a.back:hover { color:#2980b9; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>{% if data %}Edit{% else %}Add{% endif %} Problem</h2>
+<form method="POST">
+<input type="text" name="title" placeholder="Title" value="{{ data.title if data }}" required>
+<textarea name="description" placeholder="Description" rows="4" required>{{ data.description if data }}</textarea>
+<textarea name="solution" placeholder="Solution" rows="4" required>{{ data.solution if data }}</textarea>
+<button type="submit">{% if data %}Update{% else %}Add{% endif %}</button>
+</form>
+<a href="/dashboard" class="back">⬅ Back to Dashboard</a>
+</div>
+</body>
+</html>

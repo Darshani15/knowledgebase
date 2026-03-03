@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<style>
+    body { font-family: Arial; background:#eef2f7; margin:0; padding:0; }
+
+    .header {
+        background:#2c3e50;
+        color:white;
+        padding:25px;
+        text-align:center;
+    }
+
+    .menu {
+        text-align:center;
+        margin:20px 0;
+    }
+
+    .menu a {
+        text-decoration:none;
+        color:white;
+        background:#3498db;
+        padding:10px 20px;
+        border-radius:5px;
+        margin:5px;
+        transition:0.3s;
+    }
+
+    .menu a:hover { background:#2980b9; }
+
+    .count {
+        text-align:center;
+        font-weight:bold;
+        margin-bottom:10px;
+        color:#2c3e50;
+    }
+
+    table {
+        width:90%;
+        max-width:900px;
+        margin:20px auto;
+        border-collapse:collapse;
+        background:white;
+        border-radius:10px;
+        overflow:hidden;
+        box-shadow:0 0 15px rgba(0,0,0,0.2);
+    }
+
+    th, td {
+        padding:12px 15px;
+        text-align:left;
+        border-bottom:1px solid #ddd;
+    }
+
+    th {
+        background:#3498db;
+        color:white;
+    }
+
+    tr:hover { background:#f1f1f1; }
+
+    .action-btn {
+        background:#2c3e50;
+        color:white;
+        padding:6px 12px;
+        border-radius:5px;
+        text-decoration:none;
+        transition:0.3s;
+    }
+
+    .action-btn:hover { background:#1a252f; }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h2>Admin Dashboard</h2>
+</div>
+
+<div class="menu">
+    <a href="/">Home</a>
+    <a href="/add">Add Problem</a>
+    <a href="/admin_logout">Logout</a>
+</div>
+
+<div class="count">
+    Total Problems: {{ data|length }}
+</div>
+
+<table>
+<tr>
+    <th>Title</th>
+    <th>Edit</th>
+    <th>Delete</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row.title }}</td>
+    <td><a href="/edit/{{ row.id }}" class="action-btn">Edit</a></td>
+    <td><a href="/delete/{{ row.id }}" class="action-btn">Delete</a></td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff9966, #ff5e62);
+        margin: 0;
+        padding: 0;
+    }
+
+    .register-container {
+        max-width: 380px;
+        background: white;
+        margin: 100px auto;
+        padding: 35px 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        font-size: 14px;
+    }
+
+    input:focus {
+        border-color: #ff5e62;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background: #2c3e50;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #1a252f;
+    }
+
+    .error-message {
+        color: red;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .extra-link {
+        display: block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #ff5e62;
+        font-size: 14px;
+    }
+
+    .extra-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="register-container">
+
+    <h2>Create Account</h2>
+
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <!-- Updated form -->
+    <form method="POST" autocomplete="off">
+        <input type="text"
+               name="username"
+               placeholder="Choose Username"
+               autocomplete="off"
+               required>
+
+        <input type="password"
+               name="password"
+               placeholder="Choose Password"
+               autocomplete="new-password"
+               required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="/user_login" class="extra-link">Already have an account? Login</a>
+    <a href="/" class="extra-link">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>
